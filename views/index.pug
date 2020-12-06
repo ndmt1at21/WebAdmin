@@ -1,0 +1,156 @@
+extends base
+
+block content
+  .dashboard-wrapper
+    .dashboard-ecommerce
+      .container-fluid.dashboard-content
+        // ==============================================================
+        // pageheader
+        // ==============================================================
+        .row
+          .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-12
+            .page-header
+              h2.pageheader-title TTShop - Dashboard 
+              p.pageheader-text
+                | Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.
+              .page-breadcrumb
+                nav(aria-label='breadcrumb')
+                  ol.breadcrumb
+                    li.breadcrumb-item
+                      a.breadcrumb-link(href='#') Dashboard
+                    li.breadcrumb-item.active(aria-current='page') E-Commerce Dashboard Template
+        // ==============================================================
+        // end pageheader
+        // ==============================================================
+        .ecommerce-widget
+          .row
+            .col-xl-3.col-lg-6.col-md-6.col-sm-12.col-12
+              .card
+                .card-body
+                  h5.text-muted Total Revenue
+                  .metric-value.d-inline-block
+                    h1.mb-1 $12099
+                  .metric-label.d-inline-block.float-right.text-success.font-weight-bold
+                    span
+                      i.fa.fa-fw.fa-arrow-up
+                    span 5.86%
+                #sparkline-revenue
+            .col-xl-3.col-lg-6.col-md-6.col-sm-12.col-12
+              .card
+                .card-body
+                  h5.text-muted Affiliate Revenue
+                  .metric-value.d-inline-block
+                    h1.mb-1 $12099
+                  .metric-label.d-inline-block.float-right.text-success.font-weight-bold
+                    span
+                      i.fa.fa-fw.fa-arrow-up
+                    span 5.86%
+                #sparkline-revenue2
+            .col-xl-3.col-lg-6.col-md-6.col-sm-12.col-12
+              .card
+                .card-body
+                  h5.text-muted Refunds
+                  .metric-value.d-inline-block
+                    h1.mb-1 0.00
+                  .metric-label.d-inline-block.float-right.text-primary.font-weight-bold
+                    span N/A
+                #sparkline-revenue3
+            .col-xl-3.col-lg-6.col-md-6.col-sm-12.col-12
+              .card
+                .card-body
+                  h5.text-muted Avg. Revenue Per User
+                  .metric-value.d-inline-block
+                    h1.mb-1 $28000
+                  .metric-label.d-inline-block.float-right.text-secondary.font-weight-bold
+                    span -2.00%
+                #sparkline-revenue4
+          .row
+            // ==============================================================
+            // ==============================================================
+            // recent orders
+            // ==============================================================
+            .col-xl-9.col-lg-12.col-md-6.col-sm-12.col-12
+              .card
+                h5.card-header Recent Orders
+                .card-body.p-0
+                  .table-responsive
+                    table.table
+                      thead.bg-light
+                        tr.border-0
+                          th.border-0 #
+                          th.border-0 Image
+                          th.border-0 Product Name
+                          th.border-0 Product Id
+                          th.border-0 Quantity
+                          th.border-0 Price
+                          th.border-0 Order Time
+                          th.border-0 Customer
+                          th.border-0 Status
+                      tbody
+                        tr
+                          td 1
+                          td
+                            .m-r-10
+                              img.rounded(src='assets/images/product-pic.jpg' alt='user' width='45')
+                          td Product #1 
+                          td id000001 
+                          td 20
+                          td $80.00
+                          td 27-08-2018 01:22:12
+                          td Patricia J. King 
+                          td
+                            span.badge-dot.badge-brand.mr-1
+                            | InTransit
+                        tr
+                          td(colspan='9')
+                            a.btn.btn-outline-light.float-right(href='#') View Details
+            // ==============================================================
+            // end recent orders
+            // ==============================================================
+            // ==============================================================
+            // customer acquistion
+            // ==============================================================
+            .col-xl-3.col-lg-6.col-md-6.col-sm-12.col-12
+              .card
+                h5.card-header Customer Acquisition
+                .card-body
+                  .ct-chart.ct-golden-section(style='height: 354px;')
+                  .text-center
+                    span.legend-item.mr-2
+                      span.fa-xs.text-primary.mr-1.legend-tile
+                        i.fa.fa-fw.fa-square-full
+                      span.legend-text Returning
+                    span.legend-item.mr-2
+                      span.fa-xs.text-secondary.mr-1.legend-tile
+                        i.fa.fa-fw.fa-square-full
+                      span.legend-text First Time
+            // ==============================================================
+            // end customer acquistion
+            // ==============================================================
+        // ==============================================================
+        // end wrapper
+        // ==============================================================
+    // ==============================================================
+    // end main wrapper
+    // ==============================================================
+    // Optional JavaScript
+    // jquery 3.3.1
+    script(src='assets/vendor/jquery/jquery-3.3.1.min.js')
+    // bootstap bundle js
+    script(src='assets/vendor/bootstrap/js/bootstrap.bundle.js')
+    // slimscroll js
+    script(src='assets/vendor/slimscroll/jquery.slimscroll.js')
+    // main js
+    script(src='assets/libs/js/main-js.js')
+    // chart chartist js
+    script(src='assets/vendor/charts/chartist-bundle/chartist.min.js')
+    // sparkline js
+    script(src='assets/vendor/charts/sparkline/jquery.sparkline.js')
+    // morris js
+    script(src='assets/vendor/charts/morris-bundle/raphael.min.js')
+    script(src='assets/vendor/charts/morris-bundle/morris.js')
+    // chart c3 js
+    script(src='assets/vendor/charts/c3charts/c3.min.js')
+    script(src='assets/vendor/charts/c3charts/d3-5.4.0.min.js')
+    script(src='assets/vendor/charts/c3charts/C3chartjs.js')
+    script(src='assets/libs/js/dashboard-ecommerce.js')

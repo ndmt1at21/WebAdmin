@@ -1,0 +1,98 @@
+extends base
+
+block content
+  // ==============================================================
+  // wrapper
+  // ==============================================================
+  .dashboard-wrapper
+    .container-fluid.dashboard-content
+      // ==============================================================
+      // pageheader
+      // ==============================================================
+      .row
+        .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-12
+          .page-header
+            h2.pageheader-title TTShop - Danh s&aacute;ch ng&#x1B0;&#x1EDD;i d&ugrave;ng
+            p.pageheader-text
+              | Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.
+            .page-breadcrumb
+              nav(aria-label='breadcrumb')
+                ol.breadcrumb
+                  li.breadcrumb-item
+                    a.breadcrumb-link(href='#') Dashboard
+                  li.breadcrumb-item
+                    a.breadcrumb-link(href='#') Tables
+                  li.breadcrumb-item.active(aria-current='page') Data Tables
+      // ==============================================================
+      // end pageheader
+      // ==============================================================
+      .row
+        // ==============================================================
+        // basic table
+        // ==============================================================
+        // ==============================================================
+        // form filter
+        // ==============================================================
+        .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-12
+          .card
+          // ==============================================================
+          // end form filter
+          // ==============================================================
+          .card
+            .card-body
+              form#form(data-parsley-validate='' novalidate='')
+                .form-group.row
+                  label.col-1.col-sm-1.col-form-label.text-right(for='inputUser') User
+                  .col-2.col-lg-5
+                    input#inputUser.form-control(type='text' required='true' placeholder='Email/Phone...')
+                  .col-sm-1
+                    p.text-right
+                      button.btn.btn-space.btn-primary(type='submit') Submit
+            .card-body
+              .table-responsive
+                table.table.table-striped.table-bordered.first
+                  thead
+                    tr
+                      th ID
+                      th T&ecirc;n ng&#x1B0;&#x1EDD;i d&ugrave;ng
+                      th Email
+                      th &Dstrok;i&#x1EC7;n tho&#x1EA1;i
+                      th Tr&#x1EA1;ng th&aacute;i
+                      th Ch&#x1EC9;nh s&#x1EED;a
+                  tbody
+                    tr
+                      td Ashton Cox
+                      td Junior Technical Author
+                      td San Francisco
+                      td 66
+                      td 2009/01/12
+                      td
+                        a.badge.badge-pill.badge-danger(href='') Delete
+                        a.badge.badge-pill.badge-success(href='') Edit
+        // ==============================================================
+        // end basic table
+        // ==============================================================
+    // ==============================================================
+    // end main wrapper
+    // ==============================================================
+    // Optional JavaScript
+    script(src='../assets/vendor/jquery/jquery-3.3.1.min.js')
+    script(src='../assets/vendor/bootstrap/js/bootstrap.bundle.js')
+    script(src='../assets/vendor/slimscroll/jquery.slimscroll.js')
+    script(src='../assets/vendor/multi-select/js/jquery.multi-select.js')
+    script(src='../assets/libs/js/main-js.js')
+    script(src='https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js')
+    script(src='../assets/vendor/datatables/js/dataTables.bootstrap4.min.js')
+    script(src='https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js')
+    script(src='../assets/vendor/datatables/js/buttons.bootstrap4.min.js')
+    script(src='../assets/vendor/datatables/js/data-table.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js')
+    script(src='https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js')
+    script(src='https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js')
+    script(src='https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js')
+    script(src='https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js')
+    script(src='https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js')
+    script(src='https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js')
+    script(src='../assets/vendor/bootstrap-select/js/bootstrap-select.js')
