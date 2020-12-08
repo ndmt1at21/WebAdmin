@@ -8,7 +8,7 @@ exports.getAllProduct = async (req, res, next) => {
 
   Racket.paginate(query, {
     page: req.query.page || 1,
-    limit: 25
+    limit: 2
   }).then((result) => {
     res.status(200).render('productList', {
       title: 'Tất cả sản phẩm',

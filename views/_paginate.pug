@@ -1,10 +1,10 @@
 mixin buttonPageActive(link, page)
   li.page-item.active
-    a.page-link(href=link) 1
+    a.page-link(href=link)= page
 
 mixin buttonPage(link, page)
   li.page-item
-    a.page-link(href=link) 1
+    a.page-link(href=link)= page
 
 
 mixin paginate(maxPageShow)
@@ -18,7 +18,7 @@ mixin paginate(maxPageShow)
                     span(aria-hidden='true') &laquo;
                     span.sr-only Previous
 
-                    // paging wrap
+            // paging wrap
             - var startPage = 0
             if paginateRes.totalPages < maxPageShow
                 - startPage = 1
@@ -31,7 +31,7 @@ mixin paginate(maxPageShow)
             - var n = 0
             - var pages = new Array(maxPageShow)
                 each val, index in pages
-                    - var link = `?page=${startPage + index}`
+                    - var link = `?page=${startPage + index}}`
                     if startPage + index == paginateRes.page
                         +buttonPageActive(link, startPage + index)
                     else 

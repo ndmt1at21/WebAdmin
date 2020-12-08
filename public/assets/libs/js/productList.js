@@ -79,6 +79,25 @@ const updateTable = (datas, tableClassName) => {
   }
 };
 
+
+const getQueryFromForm = () => {
+  let queryArr = $('#form').serializeArray();
+  let query = '?limit=2';
+
+  queryArr.forEach((el) => {
+    console.log(el);
+    if (el.value.length) {
+      if (query.includes(el.name)) {
+        query += `,${el.value}`.toLowerCase();
+      } else {
+        query += `&${el.name}=${el.value}`.toLowerCase();
+      }
+    }
+  });
+
+  return query
+}
+
 //////////////////////////////////////////
 //////////////////////////////////////////
 /// SELECTOR
@@ -88,13 +107,14 @@ const categoryOption = document.getElementById('selectCategory');
 const dataTableBody = document.querySelector('table tbody');
 
 const cancelBtn = document.getElementById('cancelBtn');
+const pagination = document.querySelector('.pagination');
 
 //////////////////////////////////////////
 //////////////////////////////////////////
 // PROCESS
 document.addEventListener('DOMContentLoaded', async (e) => {
   const [rackets, brands] = [
-    await fetchDataRackets(''),
+    await fetchDataRackets('?limit=2'),
     await fetchDataBrands()
   ];
 
@@ -135,22 +155,7 @@ if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    let queryArr = $('#form').serializeArray();
-    let query = '';
-
-    queryArr.forEach((el) => {
-      if (el.value) {
-        if (!query) query += `?${el.name}=${el.value}`.toLowerCase();
-        else if (query.includes(el.name)) {
-          query += `,${el.value}`.toLowerCase();
-        } else {
-          query += `&${el.name}=${el.value}`.toLowerCase();
-        }
-      }
-    });
-
-    // window.history.pushState('', {}, query);
-
+    const query = getQueryFromForm();
     const rackets = await fetchDataRackets(query);
     dataTableBody.textContent = '';
 
@@ -160,12 +165,14 @@ if (form) {
   });
 }
 
+// Brand Option Change
 if (brandOption) {
   brandOption.addEventListener('change', async (e) => {
     const brands = await fetchDataBrands();
   });
 }
 
+// Cancel Button Click
 if (cancelBtn) {
   cancelBtn.addEventListener('click', (e) => {
     for (let i = 0; i < categoryOption.options.length; i++) {
@@ -177,5 +184,20 @@ if (cancelBtn) {
     }
 
     $('.selectpicker').selectpicker('refresh');
+  });
+}
+
+// Pagination
+if (pagination) {
+  pagination.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const query = getQueryFromForm() + e.target.href;
+    const rackets = await fetchDataRackets(query);
+    
+    dataTableBody.textContent = '';
+    $('table.first').DataTable().clear();
+
+    updateTable(rackets, 'table.first');
   });
 }
