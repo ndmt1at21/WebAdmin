@@ -2,16 +2,18 @@
 ///////////////////////////////////////
 /// FUCNTION
 const rowInTable = function (racket) {
-  return `<tr><td>${racket._id}</td><td>${racket.name}</td><td>${
-    racket.brand
-  }</td><td>${racket.category}</td><td>${racket.itemCode}</td>\
-<td>${racket.price}</td><td>${
-    racket.sold || 0
+  return `<tr><td>${
+    racket.name
+  }</td><td>${racket.brand.toUpperCase()}</td><td>${racket.category.toUpperCase()}</td><td>${
+    racket.itemCode
+  }</td>\
+<td>${racket.price}</td><td>${racket.sold || 0}</td><td>${
+    racket.quantity
   }</td><td><a class="badge badge-pill badge-danger" \
  href="" value=${
    racket._id
  }>Delete</a><a class="badge badge-pill badge-success" \
-href='/update/${racket._id}'>Edit</a></td></tr>`;
+href='/product/update/${racket._id}'>Edit</a></td></tr>`;
 };
 
 ///////////////////////////////////////
@@ -46,7 +48,7 @@ const sendDeleteRacket = async (id) => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'DELETE',
-      url: `http://127.0.0.1:8002/api/racket/${id}}`
+      url: `http://127.0.0.1:8002/api/v1/racket/${id}`
     })
       .then((res) => resolve(res.data.status))
       .catch((err) => reject(err))
@@ -70,7 +72,8 @@ const updateTable = (datas, tableClassName) => {
     $(document).ready(function () {
       $(tableClassName).DataTable({
         lengthChange: false,
-        paging: false
+        paging: false,
+        autoWidth: false
       });
     });
   }
@@ -79,10 +82,12 @@ const updateTable = (datas, tableClassName) => {
 //////////////////////////////////////////
 //////////////////////////////////////////
 /// SELECTOR
-const dataTableBody = document.querySelector('table tbody');
-const brandOption = document.getElementById('selectBrand');
 const form = document.getElementById('form');
+const brandOption = document.getElementById('selectBrand');
 const categoryOption = document.getElementById('selectCategory');
+const dataTableBody = document.querySelector('table tbody');
+
+const cancelBtn = document.getElementById('cancelBtn');
 
 //////////////////////////////////////////
 //////////////////////////////////////////
@@ -96,12 +101,18 @@ document.addEventListener('DOMContentLoaded', async (e) => {
   // Update table
   updateTable(rackets, 'table.first');
 
-  // Get all brand from server
+  // Show all brand from server
   if (brandOption) {
     brands.forEach((brand) => {
       const name = brand.name;
+      const categoryArr = brand.category;
 
       $('#selectBrand').append('<option>' + name.toUpperCase() + '</option>');
+      categoryArr.forEach((el) => {
+        $('#selectCategory').append(
+          '<option>' + el.toUpperCase() + '</option>'
+        );
+      });
     });
     $('.selectpicker').selectpicker('refresh');
   }
@@ -113,8 +124,6 @@ document.addEventListener('DOMContentLoaded', async (e) => {
   if (deleteBtns) {
     deleteBtns.forEach((btn) => {
       btn.addEventListener('click', async (e) => {
-        e.preventDefault();
-
         await sendDeleteRacket(btn.getAttribute('value'));
       });
     });
@@ -140,7 +149,7 @@ if (form) {
       }
     });
 
-    window.history.pushState('', {}, query);
+    // window.history.pushState('', {}, query);
 
     const rackets = await fetchDataRackets(query);
     dataTableBody.textContent = '';
@@ -148,5 +157,25 @@ if (form) {
     $('table.first').DataTable().clear();
 
     updateTable(rackets, 'table.first');
+  });
+}
+
+if (brandOption) {
+  brandOption.addEventListener('change', async (e) => {
+    const brands = await fetchDataBrands();
+  });
+}
+
+if (cancelBtn) {
+  cancelBtn.addEventListener('click', (e) => {
+    for (let i = 0; i < categoryOption.options.length; i++) {
+      categoryOption.options[i].selected = false;
+    }
+
+    for (let i = 0; i < brandOption.options.length; i++) {
+      brandOption.options[i].selected = false;
+    }
+
+    $('.selectpicker').selectpicker('refresh');
   });
 }

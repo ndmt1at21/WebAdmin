@@ -6986,3 +6986,9 @@ Media Query
 #DataTables_Table_0_info {
     margin-top: 0.5rem;
 }
+
+.alert-custom {
+    z-index: 10000;
+    width: 50%;
+    margin: 0 auto;
+}

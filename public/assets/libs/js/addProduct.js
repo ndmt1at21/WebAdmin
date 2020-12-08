@@ -1,16 +1,17 @@
 ///////////////////////////////////////////
 ///// FUNCTION
 const sendCreateRacket = async (racket) => {
+  console.log('testsjdh', racket);
   return new Promise((resolve, reject) =>
     axios({
       method: 'POST',
       url: `http://127.0.0.1:8002/api/v1/racket`,
-      body: {
-        racket
-      }
+      data: racket
     })
-      .then((res) => resolve(res.status))
-      .catch((err) => reject(err))
+      .then((res) => showAlert('success', 'Thêm thông tin vợt thành công'))
+      .catch((err) => {
+        showAlert('danger', err);
+      })
   );
 };
 
@@ -33,6 +34,10 @@ const form = document.getElementById('addProductForm');
 const brandOption = document.getElementById('brand');
 const frameOption = document.getElementById('frame');
 const shaftOption = document.getElementById('shaft');
+const difficultOption = document.getElementById('difficulty');
+const categoryOption = document.getElementById('category');
+const imageCover = document.getElementById('imageCover');
+const images = document.getElementById('images');
 
 ///////////////////////////////////////////
 ///// PROCESSING
@@ -52,18 +57,29 @@ if (brandOption) {
     const brands = await fetchDataBrands();
     frameOption.textContent = '';
     shaftOption.textContent = '';
+    categoryOption.textContent = '';
 
     brands.forEach((brand) => {
       if (brand.name === brandOption.value.toLowerCase()) {
         const frameArr = brand.frame;
         const shaftArr = brand.shaft;
+        const categoryArr = brand.category;
 
+        // Update frame
         frameArr.forEach((frame) => {
           $('#frame').append('<option>' + frame.toUpperCase() + '</option>');
         });
 
+        // Update shaft
         shaftArr.forEach((shaft) => {
           $('#shaft').append('<option>' + shaft.toUpperCase() + '</option>');
+        });
+
+        // Update shaft
+        categoryArr.forEach((category) => {
+          $('#category').append(
+            '<option>' + category.toUpperCase() + '</option>'
+          );
         });
 
         $('.selectpicker').selectpicker('refresh');
@@ -76,9 +92,10 @@ if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    // Normalize data before send POST to create
     let queryArr = $('#addProductForm').serializeArray();
     let racket = {};
-
+    console.log(queryArr);
     queryArr.forEach((el) => {
       if (racket[el.name]) {
         if (Array.isArray(racket[el.name])) {
@@ -94,6 +111,16 @@ if (form) {
       }
     });
 
-    await sendCreateRacket(racket);
+    const formData = new FormData();
+    for (const key in racket) {
+      formData.append(key, racket[key]);
+    }
+
+    formData.append('imageCover', imageCover.files[0]);
+    for (let i = 0; i < images.files.length; i++) {
+      formData.append('images', images.files[i]);
+    }
+
+    await sendCreateRacket(formData);
   });
 }

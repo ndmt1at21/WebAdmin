@@ -38,35 +38,38 @@ block content
                       select#shaft.selectpicker(name='shaft' multiple='')
                         option Mustard
                         option Ketchup
-                    label.col-5.col-sm-2.col-form-label.text-right Tr&#x1ECD;ng l&#x1B0;&#x1EE3;ng
+                    label.col-5.col-sm-2.col-form-label.text-right Tr&#x1ECD;ng l&#x1B0;&#x1EE3;ng (in U)
                     .col-5.col-lg-2
                       select#weight.selectpicker(name='weight')
-                        option 2U
-                        option 3U
-                        option 4U
-                        option 5U
-                        option 6U
-                        option 7U
+                        option 2
+                        option 3
+                        option 4
+                        option 5
+                        option 6
+                        option 7
 
                   // form group
                   .form-group.row
                     label.col-sm-1.col-form-label.text-sm-right &Dstrok;&#x1ED9; kh&oacute;
                     .col-lg-2
                       select#difficulty.selectpicker(name='difficulty')
-                        option Mustard
-                        option Ketchup
+                        option Normal
+                        option Medium
+                        option Advanced
                     label.col-sm-2.col-form-label.text-sm-right &Dstrok;&#x1ED9; c&#x1EE9;ng
                     .col-lg-2
-                      select#flex.selectpicker(value='flex')
-                        option Mustard
-                        option Ketchup
+                      select#flex.selectpicker(name='flex' value='flex')
+                        option Flex
+                        option Medium
+                        option Stiff
+                        option VeryStiff
                     label.col-sm-2.col-form-label.text-sm-right S&#x1EE9;c c&abreve;ng t&#x1ED1;i &dstrok;a
                     .col-lg-2
                       input#maxStringing.form-control(type='text' name='maxStringing' required='' placeholder='lbs')
                   
                   //form group
                   .form-group.row
-                    label.col-sm-1.col-form-label.text-sm-right &Dstrok;i&#x1EC3;m c&acirc;n b&#x1EB1;ng)
+                    label.col-sm-1.col-form-label.text-sm-right &Dstrok;i&#x1EC3;m c&acirc;n b&#x1EB1;ng
                     .col-sm-2.col-lg-2
                       input#balancePoint.form-control(type='text' name='balancePoint' required='' placeholder='mm')
                     label.col-sm-2.col-form-label.text-sm-right Xu&#x1EA5;t x&#x1EE9;
@@ -74,13 +77,24 @@ block content
                       input#madein.form-control(type='text' name='madein' required='' placeholder='Madein')
                     label.col-sm-2.col-form-label.text-sm-right M&agrave;u s&#x1EAF;c
                     .col-lg-2
-                      input#madein.form-control(type='text' name='color' required='' placeholder='trắng, đen,...')
+                      input#color.form-control(type='text' name='color' required='' placeholder='trắng, đen,...')
                   
+                  .form-group.row
+                    label.col-sm-1.col-form-label.text-sm-right Chiều dài
+                    .col-sm-2.col-lg-2
+                      input#length.form-control(type='text' name='length' required='' placeholder='mm')
+                   
+                    label.col-sm-2.col-form-label.text-sm-right Dòng vợt
+                    .col-lg-2
+                      select#category.selectpicker(name='category')
+                        // option
+                        // option
+                    
                   // form group
                   .form-group.row
                     label.col-12.col-sm-3.col-form-label.text-sm-right Giá
                     .col-12.col-sm-8.col-lg-6
-                      input#price.form-control(data-parsley-type='digits' type='text' required='' placeholder='vnd')
+                      input#price.form-control(data-parsley-type='digits' name="price" type='text' required='' placeholder='vnd')
                   
                   // form group
                   .form-group.row
@@ -91,12 +105,12 @@ block content
                   // form group
                   .form-group.row
                     label.col-12.col-sm-3.col-form-label.text-sm-right &#x1EA2;nh &dstrok;&#x1EA1;i di&#x1EC7;n
-                    input#imageCover(type='file' name='imageCover' accept='image/*')
+                    input#imageCover(type='file' name='imageCover' accept='image/*' enctype="multipart/form-data")
                   
                   // form group
                   .form-group.row
                     label.col-12.col-sm-3.col-form-label.text-sm-right &#x1EA2;nh s&#x1EA3;n ph&#x1EA9;m
-                    input#images(type='file' name='images' multiple='' accept='image/*')
+                    input#images(type='file' name='images' multiple='' accept='image/*' enctype="multipart/form-data")
                   
                   // form group
                   .form-group.row.text-right
@@ -108,13 +122,13 @@ block content
   // end main wrapper
   // ==============================================================
   // Optional JavaScript
-  script(src='../assets/vendor/jquery/jquery-3.3.1.min.js')
-  script(src='../assets/vendor/bootstrap/js/bootstrap.bundle.js')
-  script(src='../assets/vendor/slimscroll/jquery.slimscroll.js')
-  script(src='../assets/vendor/parsley/parsley.js')
-  script(src='../assets/libs/js/main-js.js')
-  script(src='../assets/vendor/bootstrap-select/js/bootstrap-select.js')
-  script(src='../assets/libs/js/addProduct.js')
+  script(src='/assets/vendor/jquery/jquery-3.3.1.min.js')
+  script(src='/assets/vendor/bootstrap/js/bootstrap.bundle.js')
+  script(src='/assets/vendor/slimscroll/jquery.slimscroll.js')
+  script(src='/assets/vendor/parsley/parsley.js')
+  script(src='/assets/libs/js/main-js.js')
+  script(src='/assets/vendor/bootstrap-select/js/bootstrap-select.js')
+  script(src='/assets/libs/js/addProduct.js')
   script.
       $('#form').parsley();
   script.

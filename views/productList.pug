@@ -23,27 +23,15 @@ block content
               | Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.
             .page-breadcrumb
               nav(aria-label='breadcrumb')
-                ol.breadcrumb
-                  li.breadcrumb-item
-                    a.breadcrumb-link(href='#') Dashboard
-                  li.breadcrumb-item
-                    a.breadcrumb-link(href='#') Tables
-                  li.breadcrumb-item.active(aria-current='page') Data Tables
+               
       // ==============================================================
       // end pageheader
       // ==============================================================
       .row
         // ==============================================================
-        // basic table
-        // ==============================================================
-        // ==============================================================
         // form filter
         // ==============================================================
-        .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-12
-          .card
-          // ==============================================================
-          // end form filter
-          // ==============================================================
+        .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-12    
           .card
             .card-body
               form#form(data-parsley-validate='' novalidate='')
@@ -61,26 +49,26 @@ block content
                     input.form-control(type='url' name='itemCode' required='' placeholder='Item Code')
                   label.col-5.col-sm-1.col-form-label.text-right(for='selectCategory') D&ograve;ng v&#x1EE3;t
                   .col-6.col-lg-5
-                    select.selectpicker(name='category' multiple)
-                      option Mustard
-                      option Ketchup
+                    select.selectpicker(name='category' id='selectCategory' multiple)
+                      // option
+                      // option  
                 .row.pt-1.pt-sm-1.mt-1t
                   .col-sm-2.pl-0
                     p.text-right
-                      button#searchSubmit.btn.btn-space.btn-primary(type='submit') Submit
-                      button.btn.btn-space.btn-secondary Cancel
+                      button#searchSubmit.btn.btn-space.btn-primary(type='submit') Tìm kiếm
+                      button#cancelBtn.btn.btn-space.btn-secondary(type='reset') Huỷ
             .card-body
               .table-responsive
                 table.table.table-striped.table-bordered.first.dataTable
                   thead
                     tr
-                      th ID
                       th T&ecirc;n s&#x1EA3;n ph&#x1EA9;m
                       th Hãng sản xuất
                       th D&ograve;ng v&#x1EE3;t
                       th Item Code
                       th Gi&aacute;
                       th &Dstrok;&atilde; b&aacute;n
+                      th Số lượng còn lại
                       th Ch&#x1EC9;nh s&#x1EED;a
                   tbody
                     // ROW DATA
