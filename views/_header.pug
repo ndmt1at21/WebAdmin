@@ -35,7 +35,7 @@
   .nav-left-sidebar.sidebar-dark
     .menu-list
       nav.navbar.navbar-expand-lg.navbar-light
-        a.d-xl-none.d-lg-none(href='#') Dashboard
+        a.d-xl-none.d-lg-none(href='/') Dashboard
         button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
           span.navbar-toggler-icon
         #navbarNav.collapse.navbar-collapse
@@ -43,7 +43,7 @@
             li.nav-divider
               | Menu
             li.nav-item
-              a.nav-link.active(href='#' data-toggle='collapse' aria-expanded='false' data-target='#submenu-1' aria-controls='submenu-1')
+              a.nav-link.active(href='/' data-toggle='collapse' aria-expanded='false' data-target='#submenu-1' aria-controls='submenu-1')
                 i.fa.fa-fw.fa-user-circle
                 |                                     Dashboard 
                 span.badge.badge-success 6
@@ -54,13 +54,13 @@
               #submenu-2.collapse.submenu(style='')
                 ul.nav.flex-column
                   li.nav-item
-                    a.nav-link(href='pages/productList.html')
+                    a.nav-link(href='/product/all')
                       | T&#x1EA5;t c&#x1EA3; s&#x1EA3;n ph&#x1EA9;m 
                       span.badge.badge-secondary New
                   li.nav-item
-                    a.nav-link(href='pages/addProduct.html') Th&ecirc;m s&#x1EA3;n ph&#x1EA9;m
+                    a.nav-link(href='/product/add') Th&ecirc;m s&#x1EA3;n ph&#x1EA9;m
                   li.nav-item
-                    a.nav-link(href='pages/editProduct.html') Ch&#x1EC9;nh s&#x1EED;a s&#x1EA3;n ph&#x1EA9;m
+                    a.nav-link(href='/product/update') Ch&#x1EC9;nh s&#x1EED;a s&#x1EA3;n ph&#x1EA9;m
             li.nav-item
               a.nav-link(href='#' data-toggle='collapse' aria-expanded='false' data-target='#submenu-3' aria-controls='submenu-3')
                 i.fas.fa-fw.fa-chart-pie
@@ -81,6 +81,7 @@
                     a.nav-link(href='pages/general-table.html') General Tables
                   li.nav-item
                     a.nav-link(href='pages/data-tables.html') Data Tables
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js')
   // ==============================================================
   // end left sidebar
   // ==============================================================

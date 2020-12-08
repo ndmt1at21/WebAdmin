@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const productRouter = require('./routes/productRouter');
 const userRouter = require('./routes/userRouter');
+const viewRouter = require('./routes/viewRouter');
 const orderRouter = require('./routes/orderRouter');
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.static(`${__dirname}/public`));
 app.set('view engine', 'pug');
 app.set('views', `${__dirname}/views`);
 
+app.use('/', viewRouter);
 app.use('/product', productRouter);
 app.use('/users', userRouter);
 app.use('/order', orderRouter);

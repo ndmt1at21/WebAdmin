@@ -1,0 +1,46 @@
+mixin buttonPageActive(link, page)
+  li.page-item.active
+    a.page-link(href=link) 1
+
+mixin buttonPage(link, page)
+  li.page-item
+    a.page-link(href=link) 1
+
+
+mixin paginate(maxPageShow)
+    if paginateRes.totalPages > 1
+        ul.pagination(style="display: flex; justify-content: flex-end; margin-top: 0.5rem;")
+            // show max 5 button page 
+            // check has prev button
+            if paginateRes.hasPrevPage
+                li.page-item
+                a.page-link(href=`${paginateRes.page - 1}` aria-label='Previous')
+                    span(aria-hidden='true') &laquo;
+                    span.sr-only Previous
+
+                    // paging wrap
+            - var startPage = 0
+            if paginateRes.totalPages < maxPageShow
+                - startPage = 1
+                - maxPageShow = paginateRes.totalPages
+            else if paginateRes.page > 2 && paginateRes.page + maxPageShow - 3  < paginateRes.totalPage
+                - startPage = paginateRes.page - 2
+            else 
+                - startPage = paginateRes.totolPages - maxPageShow + 1
+    
+            - var n = 0
+            - var pages = new Array(maxPageShow)
+                each val, index in pages
+                    - var link = `?page=${startPage + index}`
+                    if startPage + index == paginateRes.page
+                        +buttonPageActive(link, startPage + index)
+                    else 
+                        +buttonPage(link, startPage + index)
+
+
+            // check has next button
+            if paginateRes.hasNextPage
+                li.page-item
+                    a.page-link(href=`${paginateRes.page + 1}` aria-label='Next')
+                        span(aria-hidden='true') &raquo;
+                        span.sr-only Next

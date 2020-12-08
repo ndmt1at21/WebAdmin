@@ -1,134 +1,138 @@
 extends base
 
 block content
-.dashboard-wrapper
-    .container-fluid.dashboard-content
-      .row
-        // ==============================================================
-        // valifation types
-        // ==============================================================
-        .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-12
-          .card
-            h5.card-header Th&ecirc;m s&#x1EA3;n ph&#x1EA9;m
-            .card-body
-              form#validationform(data-parsley-validate='' novalidate='')
-                
-                // form group
-                .form-group.row
-                  label.col-sm-1.col-form-label.text-sm-right T&ecirc;n s&#x1EA3;n ph&#x1EA9;m
-                  .col-sm-3.col-lg-2
-                    input#name.form-control(type='text' name='name' required='' placeholder='Tên sản phẩm')
-                  label.col-sm-2.col-form-label.text-sm-right Th&#x1B0;&#x1A1;ng hi&#x1EC7;u
-                  .col-lg-2
-                    select#brand.selectpicker(value='brand')
-                      option Mustard
-                      option Ketchup
-                  label.col-sm-2.col-form-label.text-sm-right Item Code
-                  .col-lg-2
-                    input#itemCode.form-control(type='text' name='itemCode' required='' placeholder='Item Code')
-                
-                //form group
-                .form-group.row
-                  label.col-1.col-sm-1.col-form-label.text-right Khung v&#x1EE3;t
-                  .col-2.col-lg-2
-                    select#frame.selectpicker(value='frame' multiple='')
-                      option Mustard
-                      option Ketchup
-                  label.col-3.col-sm-2.col-form-label.text-right Th&acirc;n v&#x1EE3;t
-                  .col-3.col-lg-2
-                    select#shaft.selectpicker(value='shaft' multiple='')
-                      option Mustard
-                      option Ketchup
-                  label.col-5.col-sm-2.col-form-label.text-right Tr&#x1ECD;ng l&#x1B0;&#x1EE3;ng
-                  .col-5.col-lg-2
-                    select#weight.selectpicker(value='weight')
-                      option 2U
-                      option 3U
+  .dashboard-wrapper
+      .container-fluid.dashboard-content
+        .row
+          // ==============================================================
+          // valifation types
+          // ==============================================================
+          .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-12
+            .card
+              h5.card-header Th&ecirc;m s&#x1EA3;n ph&#x1EA9;m
+              .card-body
+                form#addProductForm.form(data-parsley-validate='' novalidate='')
+                  // form group
+                  .form-group.row
+                    label.col-sm-1.col-form-label.text-sm-right T&ecirc;n s&#x1EA3;n ph&#x1EA9;m
+                    .col-sm-3.col-lg-2
+                      input#name.form-control(type='text' name='name' required='' placeholder='Tên sản phẩm')
+                    label.col-sm-2.col-form-label.text-sm-right Th&#x1B0;&#x1A1;ng hi&#x1EC7;u
+                    .col-lg-2
+                      select#brand.selectpicker(name="brand" value='brand')
+                        // option 1
+                        // option 2
+                    label.col-sm-2.col-form-label.text-sm-right Item Code
+                    .col-lg-2
+                      input#itemCode.form-control(type='text' name='itemCode' required='' placeholder='Item Code')
+                  
+                  //form group
+                  .form-group.row
+                    label.col-1.col-sm-1.col-form-label.text-right Khung v&#x1EE3;t
+                    .col-2.col-lg-2
+                      select#frame.selectpicker(name='frame' multiple='')
+                        // option
+                        // option
+                    label.col-3.col-sm-2.col-form-label.text-right Th&acirc;n v&#x1EE3;t
+                    .col-3.col-lg-2
+                      select#shaft.selectpicker(name='shaft' multiple='')
+                        option Mustard
+                        option Ketchup
+                    label.col-5.col-sm-2.col-form-label.text-right Tr&#x1ECD;ng l&#x1B0;&#x1EE3;ng
+                    .col-5.col-lg-2
+                      select#weight.selectpicker(name='weight')
+                        option 2U
+                        option 3U
+                        option 4U
+                        option 5U
+                        option 6U
+                        option 7U
 
-                // form group
-                .form-group.row
-                  label.col-sm-1.col-form-label.text-sm-right &Dstrok;&#x1ED9; kh&oacute;
-                  .col-lg-2
-                    select#difficulty.selectpicker(value='difficulty')
-                      option Mustard
-                      option Ketchup
-                  label.col-sm-2.col-form-label.text-sm-right &Dstrok;&#x1ED9; c&#x1EE9;ng
-                  .col-lg-2
-                    select#flex.selectpicker(value='flex')
-                      option Mustard
-                      option Ketchup
-                  label.col-sm-2.col-form-label.text-sm-right S&#x1EE9;c c&abreve;ng t&#x1ED1;i &dstrok;a
-                  .col-lg-2
-                    input#maxStringing.form-control(type='text' name='maxStringing' required='' placeholder='lbs')
-                
-                //form group
-                .form-group.row
-                  label.col-sm-1.col-form-label.text-sm-right &Dstrok;i&#x1EC3;m c&acirc;n b&#x1EB1;ng)
-                  .col-sm-2.col-lg-2
-                    input#balancePoint.form-control(type='text' name='balancePoint' required='' placeholder='mm')
-                  label.col-sm-2.col-form-label.text-sm-right Xu&#x1EA5;t x&#x1EE9;
-                  .col-lg-2
-                    input#madein.form-control(type='text' name='madein' required='' placeholder='Madein')
-                  label.col-sm-2.col-form-label.text-sm-right M&agrave;u s&#x1EAF;c
-                  .col-lg-2
-                    input#madein.form-control(type='text' name='madein' required='' placeholder='trắng, đen,...')
-                
-                // form group
-                .form-group.row
-                  label.col-12.col-sm-3.col-form-label.text-sm-right Price
-                  .col-12.col-sm-8.col-lg-6
-                    input#price.form-control(data-parsley-type='digits' type='text' required='' placeholder='vnd')
-                
-                // form group
-                .form-group.row
-                  label.col-12.col-sm-3.col-form-label.text-sm-right M&ocirc; t&#x1EA3;
-                  .col-12.col-sm-8.col-lg-6
-                    textarea#desciption.form-control(required='')
-                
-                // form group
-                .form-group.row
-                  label.col-12.col-sm-3.col-form-label.text-sm-right &#x1EA2;nh &dstrok;&#x1EA1;i di&#x1EC7;n
-                  input#imageCover(type='file' name='imageCover' accept='image/*')
-                
-                // form group
-                .form-group.row
-                  label.col-12.col-sm-3.col-form-label.text-sm-right &#x1EA2;nh s&#x1EA3;n ph&#x1EA9;m
-                  input#images(type='file' name='images' multiple='' accept='image/*')
-                
-                // form group
-                .form-group.row.text-right
-                  .col.col-sm-10.col-lg-9.offset-sm-1.offset-lg-0
-                    button.btn.btn-space.btn-primary(type='submit') Submit
-                    button.btn.btn-space.btn-secondary Cancel
+                  // form group
+                  .form-group.row
+                    label.col-sm-1.col-form-label.text-sm-right &Dstrok;&#x1ED9; kh&oacute;
+                    .col-lg-2
+                      select#difficulty.selectpicker(name='difficulty')
+                        option Mustard
+                        option Ketchup
+                    label.col-sm-2.col-form-label.text-sm-right &Dstrok;&#x1ED9; c&#x1EE9;ng
+                    .col-lg-2
+                      select#flex.selectpicker(value='flex')
+                        option Mustard
+                        option Ketchup
+                    label.col-sm-2.col-form-label.text-sm-right S&#x1EE9;c c&abreve;ng t&#x1ED1;i &dstrok;a
+                    .col-lg-2
+                      input#maxStringing.form-control(type='text' name='maxStringing' required='' placeholder='lbs')
+                  
+                  //form group
+                  .form-group.row
+                    label.col-sm-1.col-form-label.text-sm-right &Dstrok;i&#x1EC3;m c&acirc;n b&#x1EB1;ng)
+                    .col-sm-2.col-lg-2
+                      input#balancePoint.form-control(type='text' name='balancePoint' required='' placeholder='mm')
+                    label.col-sm-2.col-form-label.text-sm-right Xu&#x1EA5;t x&#x1EE9;
+                    .col-lg-2
+                      input#madein.form-control(type='text' name='madein' required='' placeholder='Madein')
+                    label.col-sm-2.col-form-label.text-sm-right M&agrave;u s&#x1EAF;c
+                    .col-lg-2
+                      input#madein.form-control(type='text' name='color' required='' placeholder='trắng, đen,...')
+                  
+                  // form group
+                  .form-group.row
+                    label.col-12.col-sm-3.col-form-label.text-sm-right Giá
+                    .col-12.col-sm-8.col-lg-6
+                      input#price.form-control(data-parsley-type='digits' type='text' required='' placeholder='vnd')
+                  
+                  // form group
+                  .form-group.row
+                    label.col-12.col-sm-3.col-form-label.text-sm-right M&ocirc; t&#x1EA3;
+                    .col-12.col-sm-8.col-lg-6
+                      textarea#desciption.form-control(name="desciption" required='')
+                  
+                  // form group
+                  .form-group.row
+                    label.col-12.col-sm-3.col-form-label.text-sm-right &#x1EA2;nh &dstrok;&#x1EA1;i di&#x1EC7;n
+                    input#imageCover(type='file' name='imageCover' accept='image/*')
+                  
+                  // form group
+                  .form-group.row
+                    label.col-12.col-sm-3.col-form-label.text-sm-right &#x1EA2;nh s&#x1EA3;n ph&#x1EA9;m
+                    input#images(type='file' name='images' multiple='' accept='image/*')
+                  
+                  // form group
+                  .form-group.row.text-right
+                    .col.col-sm-10.col-lg-9.offset-sm-1.offset-lg-0
+                      button.btn.btn-space.btn-primary(type='submit') Thêm
+                      button.btn.btn-space.btn-secondary Huỷ
 
-// ==============================================================
-// end main wrapper
-// ==============================================================
-// Optional JavaScript
-script(src='../assets/vendor/jquery/jquery-3.3.1.min.js')
-script(src='../assets/vendor/bootstrap/js/bootstrap.bundle.js')
-script(src='../assets/vendor/slimscroll/jquery.slimscroll.js')
-script(src='../assets/vendor/parsley/parsley.js')
-script(src='../assets/libs/js/main-js.js')
-script(src='../assets/vendor/bootstrap-select/js/bootstrap-select.js')
-script.
-    $('#form').parsley();
-script.
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function() {
-    'use strict';
-    window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-    form.addEventListener('submit', function(event) {
-    if (form.checkValidity() === false) {
-    event.preventDefault();
-    event.stopPropagation();
-    }
-    form.classList.add('was-validated');
-    }, false);
-    });
-    }, false);
-    })();
+  // ==============================================================
+  // end main wrapper
+  // ==============================================================
+  // Optional JavaScript
+  script(src='../assets/vendor/jquery/jquery-3.3.1.min.js')
+  script(src='../assets/vendor/bootstrap/js/bootstrap.bundle.js')
+  script(src='../assets/vendor/slimscroll/jquery.slimscroll.js')
+  script(src='../assets/vendor/parsley/parsley.js')
+  script(src='../assets/libs/js/main-js.js')
+  script(src='../assets/vendor/bootstrap-select/js/bootstrap-select.js')
+  script(src='../assets/libs/js/addProduct.js')
+  script.
+      $('#form').parsley();
+  script.
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+      if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+      }
+      form.classList.add('was-validated');
+      }, false);
+      });
+      }, false);
+      })();
