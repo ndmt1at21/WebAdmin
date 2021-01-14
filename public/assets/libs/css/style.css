@@ -6992,3 +6992,36 @@ Media Query
     width: 50%;
     margin: 0 auto;
 }
+
+.confirm-box {
+    z-index: 9999;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .3);
+   
+}
+
+.confirm-box-body {
+    width: 50vw;
+    height: 30vh;
+
+    background-color: #fff;
+    flex: none;
+    margin: 0 auto;
+    animation-name: moveInTop;
+    animation-duration: 0.2s;
+    transition: all 1s;
+}
+
+@keyframes moveInTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-10rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}

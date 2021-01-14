@@ -1,18 +1,22 @@
 const mongoose = require('mongoose');
 const Racket = require('./../models/racketModel');
-const mongoosePaginate = require('mongoose-paginate-v2');
 const AppError = require('../ultilities/appError');
+const APIFeatures = require('../ultilities/apiFeatures');
 
-exports.getAllProduct = async (req, res, next) => {
-  const query = Racket.find();
+exports.getProducts = async (req, res, next) => {
+  let query = Racket.find();
+
+  const feature = new APIFeatures(query, req.query);
+  feature.filter().sort();
 
   Racket.paginate(query, {
     page: req.query.page || 1,
-    limit: 2
+    limit: req.query.limit || 20
   }).then((result) => {
     res.status(200).render('productList', {
       title: 'Tất cả sản phẩm',
-      paginateRes: result
+      paginateRes: result,
+      rackets: result.docs
     });
   });
 };

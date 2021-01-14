@@ -3,25 +3,12 @@
 /// FUNCTION
 
 ///////////////////////////////////////
-/// Fetch all brand of racket
-const fetchDataBrands = async () => {
-  return new Promise((resolve, reject) =>
-    axios({
-      method: 'GET',
-      url: 'http://ttshopvn.herokuapp.com/api/v1/racket/brand'
-    })
-      .then((res) => resolve(res.data.data.brands))
-      .catch((err) => reject(err))
-  );
-};
-
-///////////////////////////////////////
-/// Send request to delete racket
-const sendDeleteRacket = async (id) => {
+/// Send request to delete user
+const sendDeleteUser = async (id) => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'DELETE',
-      url: `http://ttshopvn.herokuapp.com/api/v1/racket/${id}`
+      url: `http://ttshopvn.herokuapp.com/api/v1/user/${id}`
     })
       .then((res) => resolve(res.data.status))
       .catch((err) => reject(err))
@@ -96,14 +83,8 @@ const confirmDelete = function () {
 //////////////////////////////////////////
 //////////////////////////////////////////
 /// SELECTOR
-const form = document.getElementById('form');
-const nameEle = document.getElementById('name');
-const itemCodeEle = document.getElementById('itemCode');
-const brandOption = document.getElementById('selectBrand');
-const categoryOption = document.getElementById('selectCategory');
-
-const cancelBtn = document.getElementById('cancelBtn');
-const paginate = document.querySelector('.pagination');
+const inforInput = document.getElementById('infor');
+const activeStatus = document.getElementById('active');
 
 //////////////////////////////////////////
 //////////////////////////////////////////
@@ -111,18 +92,8 @@ const paginate = document.querySelector('.pagination');
 document.addEventListener('DOMContentLoaded', async (e) => {
   let params = new URLSearchParams(document.location.search);
 
-  const nameValue = params.get('name');
-  const itemCodeValue = params.get('itemCode') ?? '';
-  let brandSelected;
-  let categorySelected;
-
-  if (params.get('brand')) {
-    brandSelected = params.get('brand').split(',');
-  }
-
-  if (params.get('category')) {
-    categorySelected = params.get('category').split(',');
-  }
+  const nameValue = params.get('infor') ?? '';
+  const itemCodeValue = params.get('active') ?? '';
 
   nameEle.value = nameValue;
   itemCodeEle.value = itemCodeValue;
@@ -134,34 +105,6 @@ document.addEventListener('DOMContentLoaded', async (e) => {
       paging: false,
       autoWidth: false
     });
-  }
-
-  // Show all brand from server
-  if (brandOption) {
-    const brands = await fetchDataBrands();
-    brands.forEach((brand) => {
-      const name = brand.name;
-      const categoryArr = brand.category;
-
-      // show brand, checked brand
-      $('#selectBrand').append('<option>' + name.toUpperCase() + '</option>');
-      if (brandSelected && brandSelected.includes(name)) {
-        brandOption.lastChild.selected = true;
-      }
-
-      // show category, checked category
-      categoryArr.forEach((category) => {
-        $('#selectCategory').append(
-          '<option>' + category.toUpperCase() + '</option>'
-        );
-
-        if (categorySelected && categorySelected.includes(category)) {
-          categoryOption.lastChild.selected = true;
-        }
-      });
-    });
-
-    $('.selectpicker').selectpicker('refresh');
   }
 
   // Select all btn delete (after load table)
@@ -176,7 +119,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
         e.preventDefault();
 
         if ((await confirmDelete()) === true) {
-          await sendDeleteRacket(btn.getAttribute('value'));
+          await sendDeleteUser(btn.getAttribute('value'));
           window.location.reload();
         }
       });

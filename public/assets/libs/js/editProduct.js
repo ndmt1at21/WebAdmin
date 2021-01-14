@@ -1,10 +1,10 @@
-///////////////////////////////////////////
+//////////////////////////////////////////////////////
 ///// FUNCTION
 const sendUpdateRacket = async (data, id) => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'PATCH',
-      url: `http://127.0.0.1:8002/api/v1/racket/${id}`,
+      url: `http://ttshopvn.herokuapp.com/api/v1/racket/${id}`,
       data: data
     })
       .then((res) => showAlert('success', 'Chỉnh sửa thông tin vợt thành công'))
@@ -20,7 +20,7 @@ const fetchDataBrands = async () => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'GET',
-      url: 'http://127.0.0.1:8002/api/v1/racket/brand'
+      url: 'http://ttshopvn.herokuapp.com/api/v1/racket/brand'
     })
       .then((res) => resolve(res.data.data.brands))
       .catch((err) => reject(err))
@@ -33,7 +33,7 @@ const fetchDataRacket = async (id) => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'GET',
-      url: `http://127.0.0.1:8002/api/v1/racket/${id}`
+      url: `http://ttshopvn.herokuapp.com/api/v1/racket/${id}`
     })
       .then((res) => resolve(res.data.data.racket))
       .catch((err) => reject(err))
@@ -54,7 +54,7 @@ const updateSelect = (options, optionsWillSelect, idSelect, selector) => {
   }
 };
 
-///////////////////////////////////////////
+/////////////////////////////////////////////////////////////
 ///// SELECTOR
 const form = document.getElementById('addProductForm');
 
@@ -77,11 +77,13 @@ const difficultOption = document.getElementById('difficulty');
 const imageCover = document.getElementById('imageCover');
 const images = document.getElementById('images');
 
-///////////////////////////////////////////
+///////////////////////////////////////////////////////////
 ///// PROCESSING
 const url = window.location.toString();
 const id = url.slice(url.lastIndexOf('/') + 1);
 
+//////////////////////////////////
+// Init when dom loaded
 document.addEventListener('DOMContentLoaded', async (e) => {
   const [racket, brands] = [await fetchDataRacket(id), await fetchDataBrands()];
 
@@ -113,7 +115,8 @@ document.addEventListener('DOMContentLoaded', async (e) => {
   frameOption.value = racket.frame[0];
 });
 
-// form
+////////////////////////////////
+// Form submit
 if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();

@@ -1,11 +1,10 @@
 ///////////////////////////////////////////
 ///// FUNCTION
 const sendCreateRacket = async (racket) => {
-  console.log('testsjdh', racket);
   return new Promise((resolve, reject) =>
     axios({
       method: 'POST',
-      url: `http://127.0.0.1:8002/api/v1/racket`,
+      url: `http://ttshopvn.herokuapp.com/api/v1/racket`,
       data: racket
     })
       .then((res) => showAlert('success', 'Thêm thông tin vợt thành công'))
@@ -21,7 +20,7 @@ const fetchDataBrands = async () => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'GET',
-      url: 'http://127.0.0.1:8002/api/v1/racket/brand'
+      url: 'http://ttshopvn.herokuapp.com/api/v1/racket/brand'
     })
       .then((res) => resolve(res.data.data.brands))
       .catch((err) => reject(err))
@@ -95,7 +94,7 @@ if (form) {
     // Normalize data before send POST to create
     let queryArr = $('#addProductForm').serializeArray();
     let racket = {};
-    console.log(queryArr);
+
     queryArr.forEach((el) => {
       if (racket[el.name]) {
         if (Array.isArray(racket[el.name])) {
@@ -111,9 +110,16 @@ if (form) {
       }
     });
 
+    console.log(racket);
+
+    // Create form data (can send file)
     const formData = new FormData();
     for (const key in racket) {
       formData.append(key, racket[key]);
+    }
+
+    for (let val of formData.entries()) {
+      console.log(val);
     }
 
     formData.append('imageCover', imageCover.files[0]);

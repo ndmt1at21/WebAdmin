@@ -43,9 +43,10 @@ app.use(express.static(`${__dirname}/public`));
 app.set('view engine', 'pug');
 app.set('views', `${__dirname}/views`);
 
+// FOR VIEW
 app.use('/', viewRouter);
 app.use('/product', productRouter);
-app.use('/users', userRouter);
+app.use('/user', userRouter);
 app.use('/order', orderRouter);
 
 module.exports = app;

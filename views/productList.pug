@@ -36,9 +36,9 @@ block content
             .card-body
               form#form(data-parsley-validate='' novalidate='')
                 .form-group.row
-                  label.col-1.col-sm-1.col-form-label.text-right(for='inputProductName') T&ecirc;n s&#x1EA3;n ph&#x1EA7;m
-                  .col-2.col-lg-5
-                    input.form-control(type='text' name='name' required='true' placeholder='Tên sản phẩm')
+                  label.col-1.col-sm-1.col-form-label.text-right(for='name') T&ecirc;n s&#x1EA3;n ph&#x1EA7;m
+                  .col-4.col-lg-5
+                    input#name.form-control(type='text' name='name' required='true' placeholder='Tên sản phẩm')
                   label.col-5.col-sm-1.col-form-label.text-right(for='selectBrand') Th&#x1B0;&#x1A1;ng hi&#x1EC7;u
                   .col-6.col-lg-5
                     select#selectBrand.selectpicker(name='brand' multiple)
@@ -46,10 +46,10 @@ block content
                 .form-group.row
                   label.col-1.col-sm-1.col-form-label.text-right(for='itemCode') Item Code
                   .col-1.col-lg-5
-                    input.form-control(type='url' name='itemCode' required='' placeholder='Item Code')
+                    input#itemCode.form-control(type='url' name='itemCode' required='' placeholder='Item Code')
                   label.col-5.col-sm-1.col-form-label.text-right(for='selectCategory') D&ograve;ng v&#x1EE3;t
                   .col-6.col-lg-5
-                    select.selectpicker(name='category' id='selectCategory' multiple)
+                    select#selectCategory.selectpicker(name='category' multiple)
                       // option
                       // option  
                 .row.pt-1.pt-sm-1.mt-1t
@@ -71,7 +71,18 @@ block content
                       th Số lượng còn lại
                       th Ch&#x1EC9;nh s&#x1EED;a
                   tbody
-                    // ROW DATA
+                    each racket in rackets
+                      tr
+                        td= racket.name
+                        td= racket.brand.toUpperCase()
+                        td= racket.category.toUpperCase()
+                        td= racket.itemCode
+                        td= racket.price
+                        td= racket.sold
+                        td= racket.quantity
+                        td
+                          a.badge.badge-pill.badge-danger(href="" value= racket._id) Delete
+                          a.badge.badge-pill.badge-success(href=`/product/update/${racket._id}`) Edit
 
               +paginate(5)
 

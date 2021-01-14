@@ -15,17 +15,25 @@ block content
                   // form group
                   .form-group.row
                     label.col-sm-1.col-form-label.text-sm-right T&ecirc;n s&#x1EA3;n ph&#x1EA9;m
-                    .col-sm-3.col-lg-2
+                    .col-sm-2.col-lg-11
                       input#name.form-control(type='text' name='name' required='' placeholder='Tên sản phẩm')
-                    label.col-sm-2.col-form-label.text-sm-right Th&#x1B0;&#x1A1;ng hi&#x1EC7;u
+                  
+                  .form-group.row
+                    label.col-sm-1.col-form-label.text-sm-right Th&#x1B0;&#x1A1;ng hi&#x1EC7;u
                     .col-lg-2
                       select#brand.selectpicker(name="brand" value='brand')
                         // option 1
                         // option 2
+                    
+                    label.col-sm-2.col-form-label.text-sm-right Dòng vợt
+                    .col-lg-2
+                      select#category.selectpicker(name='category')
+                        // option
+                        // option
+
                     label.col-sm-2.col-form-label.text-sm-right Item Code
                     .col-lg-2
                       input#itemCode.form-control(type='text' name='itemCode' required='' placeholder='Item Code')
-                  
                   //form group
                   .form-group.row
                     label.col-1.col-sm-1.col-form-label.text-right Khung v&#x1EE3;t
@@ -83,13 +91,7 @@ block content
                     label.col-sm-1.col-form-label.text-sm-right Chiều dài
                     .col-sm-2.col-lg-2
                       input#length.form-control(type='text' name='length' required='' placeholder='mm')
-                   
-                    label.col-sm-2.col-form-label.text-sm-right Dòng vợt
-                    .col-lg-2
-                      select#category.selectpicker(name='category')
-                        // option
-                        // option
-                    
+                  
                   // form group
                   .form-group.row
                     label.col-12.col-sm-3.col-form-label.text-sm-right Giá

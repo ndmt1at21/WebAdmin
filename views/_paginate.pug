@@ -6,7 +6,6 @@ mixin buttonPage(link, page)
   li.page-item
     a.page-link(href=link)= page
 
-
 mixin paginate(maxPageShow)
     if paginateRes.totalPages > 1
         ul.pagination(style="display: flex; justify-content: flex-end; margin-top: 0.5rem;")
@@ -14,7 +13,7 @@ mixin paginate(maxPageShow)
             // check has prev button
             if paginateRes.hasPrevPage
                 li.page-item
-                a.page-link(href=`${paginateRes.page - 1}` aria-label='Previous')
+                a.page-link(href=`page=${paginateRes.page - 1}` aria-label='Previous')
                     span(aria-hidden='true') &laquo;
                     span.sr-only Previous
 
@@ -31,7 +30,7 @@ mixin paginate(maxPageShow)
             - var n = 0
             - var pages = new Array(maxPageShow)
                 each val, index in pages
-                    - var link = `?page=${startPage + index}}`
+                    - var link = `page=${startPage + index}`
                     if startPage + index == paginateRes.page
                         +buttonPageActive(link, startPage + index)
                     else 
@@ -41,6 +40,6 @@ mixin paginate(maxPageShow)
             // check has next button
             if paginateRes.hasNextPage
                 li.page-item
-                    a.page-link(href=`${paginateRes.page + 1}` aria-label='Next')
+                    a.page-link(href=`page=${paginateRes.page + 1}` aria-label='Next')
                         span(aria-hidden='true') &raquo;
                         span.sr-only Next

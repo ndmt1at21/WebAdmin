@@ -3,8 +3,9 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 const { default: slugify } = require('slugify');
 const Brand = require('./brandModel');
 const AppError = require('./../ultilities/appError');
+const { db } = require('./brandModel');
 
-const racketSchema = mongoose.Schema({
+const racketSchema = new mongoose.Schema({
   name: {
     type: String,
     unique: true,
@@ -127,7 +128,10 @@ const racketSchema = mongoose.Schema({
   slug: String
 });
 
-racketSchema.plugin(mongoosePaginate);
+racketSchema.pre(/^find/, function (next) {
+  this.find({ active: { $ne: false } });
+  next();
+});
 
 racketSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
@@ -141,6 +145,8 @@ racketSchema.pre('save', async function (next) {
     next(new AppError('Brand is not found', 400));
   }
 });
+
+racketSchema.index({ name: 'text' });
 
 racketSchema.virtual('weightAvg').get(function () {
   switch (this.weight) {
@@ -160,6 +166,8 @@ racketSchema.virtual('weightAvg').get(function () {
       return 60;
   }
 });
+
+racketSchema.plugin(mongoosePaginate);
 
 const Racket = mongoose.model('Racket', racketSchema);
 module.exports = Racket;
