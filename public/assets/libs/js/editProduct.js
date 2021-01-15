@@ -4,7 +4,7 @@ const sendUpdateRacket = async (data, id) => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'PATCH',
-      url: `http://ttshopvn.herokuapp.com/api/v1/racket/${id}`,
+      url: `https://ttshopvn.herokuapp.com/api/v1/racket/${id}`,
       data: data
     })
       .then((res) => showAlert('success', 'Chỉnh sửa thông tin vợt thành công'))
@@ -20,7 +20,7 @@ const fetchDataBrands = async () => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'GET',
-      url: 'http://ttshopvn.herokuapp.com/api/v1/racket/brand'
+      url: 'https://ttshopvn.herokuapp.com/api/v1/racket/brand'
     })
       .then((res) => resolve(res.data.data.brands))
       .catch((err) => reject(err))
@@ -33,7 +33,7 @@ const fetchDataRacket = async (id) => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'GET',
-      url: `http://ttshopvn.herokuapp.com/api/v1/racket/${id}`
+      url: `https://ttshopvn.herokuapp.com/api/v1/racket/${id}`
     })
       .then((res) => resolve(res.data.data.racket))
       .catch((err) => reject(err))

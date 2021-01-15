@@ -4,7 +4,7 @@ const sendCreateRacket = async (racket) => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'POST',
-      url: `http://ttshopvn.herokuapp.com/api/v1/racket`,
+      url: `https://ttshopvn.herokuapp.com/api/v1/racket`,
       withCredentials: true,
       data: racket
     })
@@ -26,7 +26,7 @@ const fetchDataBrands = async () => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'GET',
-      url: 'http://ttshopvn.herokuapp.com/api/v1/racket/brand'
+      url: 'https://ttshopvn.herokuapp.com/api/v1/racket/brand'
     })
       .then((res) => resolve(res.data.data.brands))
       .catch((err) => reject(err))

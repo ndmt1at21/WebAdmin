@@ -85,7 +85,7 @@ const fetchDataUsers = async (queryStr) => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'GET',
-      url: `http://ttshopvn.herokuapp.com/api/v1/user?${queryStr}`,
+      url: `https://ttshopvn.herokuapp.com/api/v1/user?${queryStr}`,
       withCredentials: true
     })
       .then((res) =>
@@ -104,7 +104,7 @@ const sendActiveUser = async (id) => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'PATCH',
-      url: `http://ttshopvn.herokuapp.com/api/v1/user/${id}`,
+      url: `https://ttshopvn.herokuapp.com/api/v1/user/${id}`,
       withCredentials: true,
       data: {
         active: true
@@ -120,7 +120,7 @@ const sendDeleteUser = async (id) => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'DELETE',
-      url: `http://ttshopvn.herokuapp.com/api/v1/user/${id}`,
+      url: `https://ttshopvn.herokuapp.com/api/v1/user/${id}`,
       withCredentials: true
     })
       .then((res) => resolve(res.status))
