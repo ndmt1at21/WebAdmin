@@ -2,19 +2,14 @@ const mongoose = require('mongoose');
 const AppError = require('../ultilities/appError');
 
 exports.getUsers = async (req, res, next) => {
-  // let query = User.find();
-  // const feature = new APIFeatures(query, req.query);
-  // feature.filter().sort();
-  // query.select('+active');
-  // User.paginate(query, {
-  //   page: req.query.page || 1,
-  //   limit: req.query.limit || 2
-  // }).then((result) => {
-  //   console.log(result.docs);
-  //   res.status(200).render('userList', {
-  //     title: 'Tất cả người dùng',
-  //     paginateRes: result,
-  //     users: result.docs
-  //   });
-  // });
+  res.status(200).render('userList', {
+    title: 'Tất cả người dùng'
+  });
+};
+
+exports.getUserDetail = async (req, res, next) => {
+  console.log('dfjdhfjh');
+  res.status(200).render('userDetail', {
+    title: `Thông tin ID ${req.params.id}`
+  });
 };

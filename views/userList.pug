@@ -4,9 +4,9 @@ include _paginate
 
 block content
   append block header 
-    link(rel="stylesheet" type="text/css" href="../assets/vendor/datatables/css/select.bootstrap4.css")
-    link(rel="stylesheet" type="text/css" href="../assets/vendor/datatables/css/fixedHeader.bootstrap4.css")
-    link(rel="stylesheet" type="text/css" href="../assets/vendor/datatables/css/dataTables.bootstrap4.css")
+    link(rel="stylesheet" type="/text/css" href="/assets/vendor/datatables/css/select.bootstrap4.css")
+    link(rel="stylesheet" type="/text/css" href="/assets/vendor/datatables/css/fixedHeader.bootstrap4.css")
+    link(rel="stylesheet" type="/text/css" href="/assets/vendor/datatables/css/dataTables.bootstrap4.css")
   // ==============================================================
   // wrapper
   // ==============================================================
@@ -18,7 +18,7 @@ block content
       .row
         .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-12
           .page-header
-            h2.pageheader-title TTShop - T&#x1EA5;t c&#x1EA3; s&#x1EA3;n ph&#x1EA9;m
+            h2.pageheader-title TTShop - Quản lý người dùng
             p.pageheader-text
               | Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.
             .page-breadcrumb
@@ -63,23 +63,7 @@ block content
                       th Trạng thái
                       th Chỉnh sửa
                   tbody
-                    each user in users
-                      tr
-                        td= user._id
-                        td= user.name
-                        td= user.email
-                        td= user.phone
-                        td= user.role
-                        - console.log(user.phone)
-                        if user.active === true 
-                          td= 'Active' 
-                        else 
-                          td= 'Deleted'
-                        td
-                          a.badge.badge-pill.badge-danger(href="" value= user._id) Delete
-                          a.badge.badge-pill.badge-success(href="" value= user._id) Active
 
-              +paginate(5)
 
   // ==============================================================
   // end main wrapper
@@ -105,5 +89,6 @@ block content
   script(src='https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js')
   script(src='https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js')
   script(src='/assets/vendor/bootstrap-select/js/bootstrap-select.js')
-  script(src='/assets/libs/js/productList.js')
+  script(src='/assets/libs/js/userList.js')
+  script(src='/assets/libs/js/alert.js')
  
