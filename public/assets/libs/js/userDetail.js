@@ -6,7 +6,7 @@ const cardUserDetail = (user) => {
 
   return `<div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-12">
         <div class="text-center">
-            <img src="http://ttshopvn.herokuapp.com/img/users/${
+            <img src="https://ttshopvn.herokuapp.com/img/users/${
               user.photo
             }" alt="User Avatar" class="rounded-circle user-avatar-xxl">
             </div>
@@ -44,7 +44,8 @@ const fetchDataUser = async (id) => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'GET',
-      url: `http://ttshopvn.herokuapp.com/api/v1/user/${id}`
+      url: `https://ttshopvn.herokuapp.com/api/v1/user/${id}`,
+      withCredentials: true
     })
       .then((res) => resolve(res.data.data.user))
       .catch((err) => reject(err))

@@ -84,7 +84,8 @@ const fetchDataBrands = async () => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'GET',
-      url: 'http://ttshopvn.herokuapp.com/api/v1/racket/brand'
+      url: 'https://ttshopvn.herokuapp.com/api/v1/racket/brand',
+      withCredentials: true
     })
       .then((res) => resolve(res.data.data.brands))
       .catch((err) => reject(err))
@@ -95,7 +96,8 @@ const fetchDataRackets = async (queryStr) => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'GET',
-      url: `http://ttshopvn.herokuapp.com/api/v1/racket?${queryStr}`
+      url: `https://ttshopvn.herokuapp.com/api/v1/racket?${queryStr}`,
+      withCredentials: true
     })
       .then((res) =>
         resolve([
@@ -114,7 +116,8 @@ const sendDeleteRacket = async (id) => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'DELETE',
-      url: `http://ttshopvn.herokuapp.com/api/v1/racket/${id}`
+      url: `https://ttshopvn.herokuapp.com/api/v1/racket/${id}`,
+      withCredentials: true
     })
       .then((res) => resolve(res.data.status))
       .catch((err) => reject(err))
