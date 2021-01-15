@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-const Racket = require('./../models/racketModel');
 const AppError = require('../ultilities/appError');
-const APIFeatures = require('../ultilities/apiFeatures');
 
 exports.getProducts = async (req, res, next) => {
   res.status(200).render('productList', {
