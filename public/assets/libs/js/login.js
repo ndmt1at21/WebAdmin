@@ -11,6 +11,7 @@ const login = async (email, password) => {
     });
 
     if (res.data.status === 'success') {
+      window.location.href = '/';
     }
   } catch (error) {
     console.log(error);
