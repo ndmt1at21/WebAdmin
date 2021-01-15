@@ -85,7 +85,7 @@ const fetchDataUsers = async (queryStr) => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'GET',
-      url: `http://127.0.0.1:8002/api/v1/user?${queryStr}`
+      url: `http://ttshopvn.herokuapp.com/api/v1/user?${queryStr}`
     })
       .then((res) =>
         resolve([
