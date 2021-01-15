@@ -14,20 +14,22 @@ block content
                 form#addProductForm.form(data-parsley-validate='' novalidate='')
                   // form group
                   .form-group.row
-                    label.col-sm-1.col-form-label.text-sm-right T&ecirc;n s&#x1EA3;n ph&#x1EA9;m
+                    label.col-sm-1.col-form-label.text-sm-right Tên sản phẩm
+                    .col-sm-2.col-lg-11
+                      input#name.form-control(type='text' name='name' required='true' placeholder='Tên sản phẩm')
                   
                   .form-group.row
-                    .col-sm-3.col-lg-2
-                      input#name.form-control(type='text' name='name' required='' placeholder='Tên sản phẩm' readonly)
-                    label.col-sm-2.col-form-label.text-sm-right Th&#x1B0;&#x1A1;ng hi&#x1EC7;u
-                    
+                    label.col-sm-1.col-form-label.text-sm-right Thương hiệu
                     .col-lg-2
-                      input#brand.form-control(type='text' name='brand' required='' placeholder='Yonex' readonly)
-                    label.col-sm-2.col-form-label.text-sm-right Item Code
+                      input#brand.form-control(type='text' name='brand' placeholder='Thương hiệu' readonly)
                     
+                    label.col-sm-2.col-form-label.text-sm-right Dòng vợt
+                    .col-lg-2
+                      input#category.form-control(type='text' name='category' placeholder='Dòng vợt' readonly)
+
+                    label.col-sm-2.col-form-label.text-sm-right Item Code
                     .col-lg-2
                       input#itemCode.form-control(type='text' name='itemCode' required='' placeholder='Item Code' readonly)
-                  
                   //form group
                   .form-group.row
                     label.col-1.col-sm-1.col-form-label.text-right Khung v&#x1EE3;t
@@ -40,31 +42,23 @@ block content
                       select#shaft.selectpicker(name='shaft' multiple='')
                         option Mustard
                         option Ketchup
-                    label.col-5.col-sm-2.col-form-label.text-right Tr&#x1ECD;ng l&#x1B0;&#x1EE3;ng (in U)
-                    .col-5.col-lg-2
+                    label.col-sm-2.col-form-label.text-right Tr&#x1ECD;ng l&#x1B0;&#x1EE3;ng (in U)
+                    .col-lg-2
                       select#weight.selectpicker(name='weight')
-                        option 2
-                        option 3
-                        option 4
-                        option 5
-                        option 6
-                        option 7
+                      // option
 
                   // form group
                   .form-group.row
                     label.col-sm-1.col-form-label.text-sm-right &Dstrok;&#x1ED9; kh&oacute;
                     .col-lg-2
                       select#difficulty.selectpicker(name='difficulty')
-                        option Normal
-                        option Medium
-                        option Advanced
+                      // option
+
                     label.col-sm-2.col-form-label.text-sm-right &Dstrok;&#x1ED9; c&#x1EE9;ng
                     .col-lg-2
                       select#flex.selectpicker(name='flex' value='flex')
-                        option Flex
-                        option Medium
-                        option Stiff
-                        option VeryStiff
+                      // option
+
                     label.col-sm-2.col-form-label.text-sm-right S&#x1EE9;c c&abreve;ng t&#x1ED1;i &dstrok;a
                     .col-lg-2
                       input#maxStringing.form-control(type='text' name='maxStringing' required='' placeholder='lbs')
@@ -85,16 +79,17 @@ block content
                     label.col-sm-1.col-form-label.text-sm-right Chiều dài
                     .col-sm-2.col-lg-2
                       input#length.form-control(type='text' name='length' required='' placeholder='mm')
-                   
-                    label.col-sm-2.col-form-label.text-sm-right Dòng vợt
-                    .col-lg-2
-                      input#category.form-control(type='text' name='category' required='' readonly)
-                    
+                  
                   // form group
                   .form-group.row
                     label.col-12.col-sm-3.col-form-label.text-sm-right Giá
                     .col-12.col-sm-8.col-lg-6
                       input#price.form-control(data-parsley-type='digits' name="price" type='text' required='' placeholder='vnd')
+                  
+                  .form-group.row
+                    label.col-12.col-sm-3.col-form-label.text-sm-right Số lượng nhập
+                    .col-12.col-sm-8.col-lg-6
+                      input#quantity.form-control(data-parsley-type='digits' name="quantity" type='number' required='true' placeholder='Số lượng')
                   
                   // form group
                   .form-group.row
@@ -115,7 +110,7 @@ block content
                   // form group
                   .form-group.row.text-right
                     .col.col-sm-10.col-lg-9.offset-sm-1.offset-lg-0
-                      button.btn.btn-space.btn-primary(type='submit') Chỉnh sửa
+                      button.btn.btn-space.btn-primary(type='submit') Cập nhật
                       button.btn.btn-space.btn-secondary Huỷ
 
   // ==============================================================

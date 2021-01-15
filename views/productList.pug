@@ -70,21 +70,8 @@ block content
                       th &Dstrok;&atilde; b&aacute;n
                       th Số lượng còn lại
                       th Ch&#x1EC9;nh s&#x1EED;a
-                  tbody
-                    each racket in rackets
-                      tr
-                        td= racket.name
-                        td= racket.brand.toUpperCase()
-                        td= racket.category.toUpperCase()
-                        td= racket.itemCode
-                        td= racket.price
-                        td= racket.sold
-                        td= racket.quantity
-                        td
-                          a.badge.badge-pill.badge-danger(href="" value= racket._id) Delete
-                          a.badge.badge-pill.badge-success(href=`/product/update/${racket._id}`) Edit
+                  tbody(style='text-transform: uppercase;')
 
-              +paginate(5)
 
   // ==============================================================
   // end main wrapper

@@ -42,13 +42,16 @@ const fetchDataRacket = async (id) => {
 
 const updateSelect = (options, optionsWillSelect, idSelect, selector) => {
   options.forEach((el) => {
-    $(idSelect).append('<option>' + el.toUpperCase() + '</option>');
+    $(idSelect).append('<option>' + String(el).toUpperCase() + '</option>');
   });
 
+  optionsWillSelect = optionsWillSelect.map((el) => String(el));
   for (let i = 0; i < selector.options.length; i++) {
     const option = selector.options[i];
 
-    option.selected = optionsWillSelect.includes(option.value.toLowerCase())
+    option.selected = optionsWillSelect.includes(
+      String(option.value).toLowerCase()
+    )
       ? true
       : 0;
   }
@@ -58,7 +61,7 @@ const updateSelect = (options, optionsWillSelect, idSelect, selector) => {
 ///// SELECTOR
 const form = document.getElementById('addProductForm');
 
-const name = document.getElementById('name');
+const nameRacket = document.getElementById('name');
 const brand = document.getElementById('brand');
 const itemCode = document.getElementById('itemCode');
 const length = document.getElementById('length');
@@ -69,13 +72,17 @@ const color = document.getElementById('color');
 const category = document.getElementById('category');
 const desciption = document.getElementById('desciption');
 const price = document.getElementById('price');
+const quantity = document.getElementById('quantity');
 
-const weightOption = document.getElementById('weightOption');
+const flexOption = document.getElementById('flex');
+const weightOption = document.getElementById('weight');
 const frameOption = document.getElementById('frame');
 const shaftOption = document.getElementById('shaft');
 const difficultOption = document.getElementById('difficulty');
 const imageCover = document.getElementById('imageCover');
 const images = document.getElementById('images');
+
+const cancelBtn = document.querySelector('.btn.btn-space.btn-secondary');
 
 ///////////////////////////////////////////////////////////
 ///// PROCESSING
@@ -88,7 +95,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
   const [racket, brands] = [await fetchDataRacket(id), await fetchDataBrands()];
 
   // Show name, brand
-  name.value = racket.name;
+  nameRacket.value = racket.name;
   brand.value = racket.brand.toUpperCase();
   itemCode.value = racket.itemCode;
   length.value = racket.length;
@@ -99,6 +106,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
   category.value = racket.category.toUpperCase();
   desciption.value = racket.desciption;
   price.value = racket.price;
+  quantity.value = racket.quantity;
 
   // Update multi select
   brands.forEach((brand) => {
@@ -110,6 +118,21 @@ document.addEventListener('DOMContentLoaded', async (e) => {
       updateSelect(shaftArr, racket.shaft, '#shaft', shaftOption);
     }
   });
+
+  updateSelect([2, 3, 4, 5, 6, 7, 8], [racket.weight], '#weight', weightOption);
+  updateSelect(
+    ['stiff', 'medium', 'flex', 'verystiff'],
+    [racket.flex],
+    '#flex',
+    flexOption
+  );
+  updateSelect(
+    ['normal', 'medium', 'advanced'],
+    [racket.difficulty],
+    '#difficulty',
+    difficultOption
+  );
+
   $('.selectpicker').selectpicker('refresh');
 
   frameOption.value = racket.frame[0];
@@ -151,5 +174,13 @@ if (form) {
     }
 
     await sendUpdateRacket(formData, id);
+  });
+}
+
+if (cancelBtn) {
+  cancelBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    window.location.href = '/product/all';
   });
 }

@@ -5,9 +5,15 @@ const sendCreateRacket = async (racket) => {
     axios({
       method: 'POST',
       url: `http://ttshopvn.herokuapp.com/api/v1/racket`,
+      withCredentials: true,
       data: racket
     })
-      .then((res) => showAlert('success', 'Thêm thông tin vợt thành công'))
+      .then((res) => {
+        showAlert('success', 'Thêm thông tin vợt thành công');
+        window.open(
+          `https://ttshopvn.herokuapp.com/${res.data.data.slug}.${res.data.data._id}`
+        );
+      })
       .catch((err) => {
         showAlert('danger', err);
       })
@@ -110,16 +116,10 @@ if (form) {
       }
     });
 
-    console.log(racket);
-
     // Create form data (can send file)
     const formData = new FormData();
     for (const key in racket) {
       formData.append(key, racket[key]);
-    }
-
-    for (let val of formData.entries()) {
-      console.log(val);
     }
 
     formData.append('imageCover', imageCover.files[0]);

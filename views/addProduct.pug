@@ -46,8 +46,8 @@ block content
                       select#shaft.selectpicker(name='shaft' multiple='')
                         option Mustard
                         option Ketchup
-                    label.col-5.col-sm-2.col-form-label.text-right Tr&#x1ECD;ng l&#x1B0;&#x1EE3;ng (in U)
-                    .col-5.col-lg-2
+                    label.col-sm-2.col-form-label.text-right Tr&#x1ECD;ng l&#x1B0;&#x1EE3;ng (in U)
+                    .col-lg-2
                       select#weight.selectpicker(name='weight')
                         option 2
                         option 3
@@ -96,13 +96,18 @@ block content
                   .form-group.row
                     label.col-12.col-sm-3.col-form-label.text-sm-right Giá
                     .col-12.col-sm-8.col-lg-6
-                      input#price.form-control(data-parsley-type='digits' name="price" type='text' required='' placeholder='vnd')
+                      input#price.form-control(data-parsley-type='digits' name="price" type='text' required='true' placeholder='VND')
                   
+                  .form-group.row
+                    label.col-12.col-sm-3.col-form-label.text-sm-right Số lượng nhập
+                    .col-12.col-sm-8.col-lg-6
+                      input#quantity.form-control(data-parsley-type='digits' name="quantity" type='number' required='true' placeholder='Số lượng')
+
                   // form group
                   .form-group.row
-                    label.col-12.col-sm-3.col-form-label.text-sm-right M&ocirc; t&#x1EA3;
+                    label.col-12.col-sm-3.col-form-label.text-sm-right Mô tả
                     .col-12.col-sm-8.col-lg-6
-                      textarea#desciption.form-control(name="desciption" required='')
+                      textarea#desciption.form-control(name="desciption" placeholder="Mô tả chi tiết giúp người dùng dễ hình dung sản phẩm hơn" required='')
                   
                   // form group
                   .form-group.row

@@ -17,7 +17,7 @@ app.options('*', cors()); // include before other routes
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://ttshopvn.herokuapp.com');
+  res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:8002');
 
   // Request methods you wish to allow
   res.setHeader(
