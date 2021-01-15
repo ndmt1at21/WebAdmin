@@ -2,7 +2,7 @@ const login = async (email, password) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://ttshopvn.herokuapp.com/api/v1/user/login',
+      url: 'https://ttshopvn.herokuapp.com/api/v1/user/login',
       withCredentials: true,
       data: {
         email,
@@ -11,7 +11,6 @@ const login = async (email, password) => {
     });
 
     if (res.data.status === 'success') {
-      window.location.href = '/';
     }
   } catch (error) {
     console.log(error);
