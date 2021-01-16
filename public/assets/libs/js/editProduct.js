@@ -21,7 +21,8 @@ const fetchDataBrands = async () => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'GET',
-      url: 'https://ttshopvn.herokuapp.com/api/v1/racket/brand'
+      url: 'https://ttshopvn.herokuapp.com/api/v1/racket/brand',
+      withCredentials: true
     })
       .then((res) => resolve(res.data.data.brands))
       .catch((err) => reject(err))

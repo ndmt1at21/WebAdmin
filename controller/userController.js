@@ -8,7 +8,6 @@ exports.getUsers = async (req, res, next) => {
 };
 
 exports.getUserDetail = async (req, res, next) => {
-  console.log('dfjdhfjh');
   res.status(200).render('userDetail', {
     title: `Thông tin ID ${req.params.id}`
   });

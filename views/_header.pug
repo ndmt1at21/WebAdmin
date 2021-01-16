@@ -11,19 +11,17 @@
         ul.navbar-nav.ml-auto.navbar-right-top
           li.nav-item.dropdown.nav-user
             a#navbarDropdownMenuLink2.nav-link.nav-user-img(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-              img.user-avatar-md.rounded-circle(src='assets/images/avatar-1.jpg' alt='')
+              img#userAvatar.user-avatar-md.rounded-circle(src='' alt='')
             .dropdown-menu.dropdown-menu-right.nav-user-dropdown(aria-labelledby='navbarDropdownMenuLink2')
               .nav-user-info
-                h5.mb-0.text-white.nav-user-name NDMT
-              a.dropdown-item(href='#')
+                h5#userName.mb-0.text-white.nav-user-name NDMT
+              a#userAccount.dropdown-item(href='#')
                 i.fas.fa-user.mr-2
-                | Account
-              a.dropdown-item(href='#')
-                i.fas.fa-cog.mr-2
-                | Setting
-              a.dropdown-item(href='#')
+                | Tài khoản
+
+              a#logout.dropdown-item(href='#')
                 i.fas.fa-power-off.mr-2
-                | Logout
+                | Đăng xuất
   // ==============================================================
   // end navbar
   // ==============================================================
@@ -67,20 +65,10 @@
                     a.nav-link(href='/user/all') T&#x1EA5;t c&#x1EA3; ng&#x1B0;&#x1EDD;i d&ugrave;ng
                   li.nav-item
                     a.nav-link(href='pages/chart-chartist.html') Chartist Charts
-            li.nav-item
-              a.nav-link(href='#' data-toggle='collapse' aria-expanded='false' data-target='#submenu-5' aria-controls='submenu-5')
-                i.fas.fa-fw.fa-table
-                |                                     Qu&#x1EA3;n l&yacute; &dstrok;&#x1A1;n h&agrave;ng
-              #submenu-5.collapse.submenu(style='')
-                ul.nav.flex-column
-                  li.nav-item
-                    a.nav-link(href='pages/general-table.html') General Tables
-                  li.nav-item
-                    a.nav-link(href='pages/data-tables.html') Data Tables
-
 
   script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js')
   script(src='/assets/libs/js/alert.js')
+  script(src='/assets/libs/js/header.js')
   // ==============================================================
   // end left sidebar
   // ==============================================================
