@@ -7,7 +7,7 @@ const fetchCurrentUser = async (id) => {
   return new Promise((resolve, reject) =>
     axios({
       method: 'GET',
-      url: `https://adminttshopvn.herokuapp.com/api/v1/user/currentUser`,
+      url: `https://ttshopvn.herokuapp.com/api/v1/user/currentUser`,
       withCredentials: true
     })
       .then((res) => resolve(res.data.data.user))
@@ -19,7 +19,7 @@ const logout = async () => {
   try {
     const res = await axios({
       method: 'GET',
-      url: 'https://adminttshopvn.herokuapp.com/api/v1/user/logout',
+      url: 'https://ttshopvn.herokuapp.com/api/v1/user/logout',
       withCredentials: true
     });
 
@@ -40,9 +40,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
       window.location.href = '/';
     }
 
-    userAvatar.src = `https://adminttshopvn.herokuapp.com/${user.photo}`;
+    userAvatar.src = `https://ttshopvn.herokuapp.com/${user.photo}`;
     userName.textContent = user.name;
-    userAccount.href = `https://adminttshopvn.herokuapp.com/me`;
+    userAccount.href = `https://ttshopvn.herokuapp.com/me`;
 
     logoutBtn.addEventListener('click', async (e) => {
       e.preventDefault();

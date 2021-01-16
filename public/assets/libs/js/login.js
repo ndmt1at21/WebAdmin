@@ -2,7 +2,7 @@ const login = async (email, password) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'https://adminttshopvn.herokuapp.com/api/v1/user/login',
+      url: 'https://ttshopvn.herokuapp.com/api/v1/user/login',
       withCredentials: true,
       data: {
         email,
