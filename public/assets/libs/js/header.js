@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
       window.location.href = '/';
     }
 
-    userAvatar.src = `https://ttshopvn.herokuapp.com/${user.photo}`;
+    userAvatar.src = `https://ttshopvn.herokuapp.com/img/users/${user.photo}`;
     userName.textContent = user.name;
     userAccount.href = `https://ttshopvn.herokuapp.com/me`;
 
