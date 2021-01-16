@@ -353,25 +353,6 @@ if (cancelBtn) {
   });
 }
 
-const getQueryFromForm = () => {
-  let queryArr = $('#form').serializeArray();
-  let query = '';
-
-  queryArr.forEach((el) => {
-    if (el.value.length) {
-      if (!query) {
-        query = `${el.name}=${el.value.toLowerCase()}`;
-      } else if (query.includes(el.name)) {
-        query += `,${el.value}`.toLowerCase();
-      } else {
-        query += `&${el.name}=${el.value.toLowerCase()}`;
-      }
-    }
-  });
-
-  return query;
-};
-
 if (form) {
   form.addEventListener('submit', async (e) => {
     const query = getQueryFromForm();
