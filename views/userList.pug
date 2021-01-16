@@ -36,14 +36,12 @@ block content
             .card-body
               form#form(data-parsley-validate='' novalidate='')
                 .form-group.row
-                  label.col-1.col-sm-1.col-form-label.text-right(for='infor') Tên/Email
+                  label.col-1.col-sm-1.col-form-label.text-right(for='infor') Email
                   .col-4.col-lg-5
-                    input#infor.form-control(type='text' name='infor' required='true' placeholder='Tên, Email...')
+                    input#email.form-control(type='text' name='email' placeholder='Email')
                   label.col-5.col-sm-1.col-form-label.text-right(for='') Trạng thái
                   .col-6.col-lg-5
-                    select#active.selectpicker(name='active' multiple)
-                      option Active
-                      option Deleted
+                    nput#name.form-control(type='text' name='name' placeholder='Tên')
 
                 .row.pt-1.pt-sm-1.mt-1t
                   .col-sm-2.pl-0
